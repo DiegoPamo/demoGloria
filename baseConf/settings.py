@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'baseConf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'demoGloria',
+        'NAME': 'demoGloria',
         'USER': 'postgres',
-        'PASSWORD': 'root',
+        'PASSWORD': 'needforspeED1',
         'HOST': 'localhost',
         'PORT': 5432,
     }
@@ -133,7 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticFiles')
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

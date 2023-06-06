@@ -20,6 +20,7 @@
     <!-- Custom CSS -->
 
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/chartStyle.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -323,8 +324,12 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Control de Contenido Neto - 365g</h4>
-                        <form class="form-horizontal mt-3 form-material" action="{% url 'register' %}" method="POST">
+                        <div class="flex-row">
+                            <h4 class="card-title">Control de Contenido Neto - 365g</h4>
+                            <input type="button" value="Ocultar" id="show_button">
+                        </div>
+                        
+                        <form id="form_contenido" class="form-horizontal mt-3 form-material" action="{% url 'register' %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="form-group col-md-2 mb-0">
@@ -389,7 +394,9 @@
                             <div class="card-body">
                                 <h4 class="card-title">Promedio Muestro</h4>
                                 <div class="demo-container" style="height:400px;">
-                                    <div id="placeholder" class="flot-chart-content"></div>
+                                    <div id="chart-summary" style="width: 700px; height: 400px;"></div>
+
+                                    
                                 </div>
                             </div>
                         </div>
@@ -417,156 +424,156 @@
                         <tbody>
                         <tr>
                             <td>1</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
+                            <td><input id="sg1" type="text" class="form-control input-sg1" ></td>
 
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input id="sg12" type="text" class="form-control" disabled></td>
+                            <td><input id="sg22" type="text" class="form-control" disabled></td>
+                            <td><input id="sg32" type="text" class="form-control" disabled></td>
+                            <td><input id="sg42" type="text" class="form-control" disabled></td>
+                            <td><input id="sg52" type="text" class="form-control" disabled></td>
+                            <td><input id="sg62" type="text" class="form-control" disabled></td>
+                            <td><input id="sg72" type="text" class="form-control" disabled></td>
+                            <td><input id="sg82" type="text" class="form-control" disabled></td>
+                            <td><input id="sg92" type="text" class="form-control" disabled></td>
+                            <td><input id="sg102" type="text" class="form-control" disabled></td>
+                            <td><input id="sg112" type="text" class="form-control" disabled></td>
+                            <td><input id="sg122" type="text" class="form-control" disabled></td>
+                            <td><input id="sg132" type="text" class="form-control" disabled></td>
+                            <td><input id="sg142" type="text" class="form-control" disabled></td>
+                            <td><input id="sg152" type="text" class="form-control" disabled></td>
+                            <td><input id="sg162" type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td>x̄</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td rowspan="1">RANGO (R)</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>
                         <tr>
                             <td>HORA</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
+                            <td><input type="text" class="form-control" disabled></td>
                         </tr>      
                         </tbody>
                     </table>
@@ -627,17 +634,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
     <script>
         // Crear una instancia del gráfico
-        var myChart = echarts.init(document.getElementById('grafico'));
+        var myChart = echarts.init(document.getElementById('chart-summary'));
 
         // Definir variables para almacenar los datos
-        var xAxisData = ['input 1', 'input 2', 'input 3'];
+        var xAxisData = ['Promedio 1', 'Promedio2', 'Promedio3','Promedio4','Promedio5','Promedio5','Promedio5','Promedio5','Promedio5','Promedio5','Promedio5'];
         var valores = [];
 
         // Actualizar el gráfico con los valores de los inputs
         function actualizarGrafico() {
         var nuevosValores = [];
 
-        $('.mi-input').each(function() {
+        $('.input-sg').each(function() {
             var valor = parseFloat($(this).val());
             nuevosValores.push(valor);
         });
@@ -687,14 +694,41 @@
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <!-- Flot Charts JavaScript -->
-    <!-- <script src="{% static 'src/assets/extra-libs/flot/excanvas.js' %}"></script>
+    {% comment %} <script src="{% static 'src/assets/extra-libs/flot/excanvas.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.pie.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.time.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.stack.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
-    <script src="{% static 'dist/js/pages/flot/flot-data.js' %}"></script> -->
+    <script src="{% static 'dist/js/pages/flot/flot-data.js' %}"></script> --> {% endcomment %}
+    <script>
+        const showButton = document.getElementById('show_button');
+        const formContenido = document.getElementById('form_contenido');
+        showButton.addEventListener('click', ()=>{
+            formContenido.style.display = 'none';
+            showButton.value = "Mostrar";
+        })
+        {% comment %} const onChangeG11=()=>{
+            const sg11 = document.getElementById('sg11');
+            const sg12 = document.getElementById('sg12');
+            if(sg11.value != ""){
+                sg12.disabled = "false";
+            } 
+        }
+        const onChangeG21=()=>{
+
+        }
+        const onChangeG31= ()=>{
+
+        }
+        const onChangeG41=()=>{
+
+        }
+        const onChangeG51=()=>{
+
+        } {% endcomment %}
+    </script>
 </body>
 
 </html>
