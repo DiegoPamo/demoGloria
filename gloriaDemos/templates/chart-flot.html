@@ -572,6 +572,11 @@
                     </table>
                 </div>
             </div>
+
+            <div id="grafico" style="width: 500px; height: 500px;"></div>
+            <input class="mi-input" type="number" id="input1" />
+            <input class="mi-input" type="number" id="input2" />
+            <input class="mi-input" type="number" id="input3" />
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -615,10 +620,52 @@
             </ul>
         </div>
     </aside>
-    <div class="chat-windows"></div>
+
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <script>
+        // Crear una instancia del gráfico
+        var myChart = echarts.init(document.getElementById('grafico'));
+
+        // Definir variables para almacenar los datos
+        var xAxisData = ['input 1', 'input 2', 'input 3'];
+        var valores = [];
+
+        // Actualizar el gráfico con los valores de los inputs
+        function actualizarGrafico() {
+        var nuevosValores = [];
+
+        $('.mi-input').each(function() {
+            var valor = parseFloat($(this).val());
+            nuevosValores.push(valor);
+        });
+
+        valores = nuevosValores;
+
+        var option = {
+            xAxis: {
+            type: 'category',
+            data: xAxisData
+            },
+            yAxis: {
+            type: 'value'
+            },
+            series: [
+            {
+                data: valores,
+                type: 'line'
+            }
+            ]
+        };
+
+        myChart.setOption(option);
+        }
+
+        // Ejecutar la función cada 2 segundos
+        setInterval(actualizarGrafico, 2000);
+    </script>
     <script src="{% static 'src/assets/libs/jquery/dist/jquery.min.js' %}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'src/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
@@ -640,14 +687,14 @@
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <!-- Flot Charts JavaScript -->
-    <script src="{% static 'src/assets/extra-libs/flot/excanvas.js' %}"></script>
+    <!-- <script src="{% static 'src/assets/extra-libs/flot/excanvas.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.pie.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.time.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.stack.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static 'src/assets/extra-libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
-    <script src="{% static 'dist/js/pages/flot/flot-data.js' %}"></script>
+    <script src="{% static 'dist/js/pages/flot/flot-data.js' %}"></script> -->
 </body>
 
 </html>
