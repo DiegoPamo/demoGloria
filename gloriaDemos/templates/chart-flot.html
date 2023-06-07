@@ -326,7 +326,6 @@
                     <div class="card-body">
                         <div class="flex-row">
                             <h4 class="card-title">Control de Contenido Neto - 365g</h4>
-                            <input type="button" value="Ocultar" id="show_button">
                         </div>
                         
                         <form id="form_contenido" class="form-horizontal mt-3 form-material" action="{% url 'register' %}" method="POST">
@@ -393,8 +392,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Promedio Muestro</h4>
-                                <div class="demo-container" style="height:400px;">
-                                    <div id="placeholder" class="flot-chart-content"></div>
+                                <div class="demo-container" style="height:450px; width:650px;">
+                                    <div id="grafico" class="flot-chart-content" style="height:450px; width:650px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -405,8 +404,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Rango</h4>
-                                <div class="demo-container" style="height:400px;">
-                                    <div id="placeholder" class="flot-chart-content"></div>
+                                <div class="demo-container"style="height:450px; width:650px;">
+                                    <div id="grafico2" class="flot-chart-content" style="height:450px; width:650px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -414,174 +413,170 @@
                     <!-- column -->
                 </div>
 
-                <div class="card">
+                <div class="card" style="overflow-x: auto;">
                     <div class="card-body">
                         <h4 class="card-title">Subgrupos</h4>
                     </div>
-                    <table class="table table-striped">
+                    <table class="table table-striped" >
                         <tbody>
                         <tr>
                             <td>1</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
+                            <td><input type="text" class="form-control input-fila fila1 input-fila-1"></td>
 
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
+                            <td><input type="text" class="form-control input-fila fila2 input-fila-2"></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
+                            <td><input type="text" class="form-control input-fila fila3 input-fila-3"></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
+                            <td><input type="text" class="form-control input-fila fila4 input-fila-4"></td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
+                            <td><input type="text" class="form-control input-fila fila5 input-fila-5"></td>
                         </tr>
                         <tr>
                             <td>x̄</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion1" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion2" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion3" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion4" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion5" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion6" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion7" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion8" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion9" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion10" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion11" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion12" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion13" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion14" readonly></td>
+                            <td><input type="text" class="form-control mi-input" id="resultado-posicion15" readonly></td>
+                            <td><input type="text" class="form-control mi-input " id="resultado-posicion16" readonly></td>
                         </tr>
                         <tr>
                             <td rowspan="1">RANGO (R)</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" id="resultado1" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado2" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado3" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado4" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado5" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado6" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado7" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado8" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado9" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado10" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado11" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado12" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado13" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado14" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado15" class="form-control cl-rango" readonly></td>
+                            <td><input type="text" id="resultado16" class="form-control cl-rango" readonly></td>
                         </tr>
                         <tr>
                             <td>HORA</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="time" class="form-control cl-hora" id="hora1"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora2"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora3"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora4"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora5"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora6"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora7"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora8"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora9"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora10"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora11"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora12"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora13"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora14"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora15"></td>
+                            <td><input type="time" class="form-control cl-hora"id="hora16"></td>
                         </tr>      
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div id="grafico" style="width: 500px; height: 500px;"></div>
-            <input class="mi-input" type="number" id="input1" />
-            <input class="mi-input" type="number" id="input2" />
-            <input class="mi-input" type="number" id="input3" />
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -630,58 +625,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
-    <script>
-        // Crear una instancia del gráfico
-        var myChart = echarts.init(document.getElementById('chart-summary'));
 
-        // Definir variables para almacenar los datos
-        var xAxisData = ['input 1', 'input 2', 'input 3'];
-        var valores = [];
-
-        // Actualizar el gráfico con los valores de los inputs
-        function actualizarGrafico() {
-        var nuevosValores = [];
-
-        $('.input-sg').each(function() {
-            var valor = parseFloat($(this).val());
-            nuevosValores.push(valor);
-        });
-
-        valores = nuevosValores;
-
-        var option = {
-            xAxis: {
-            type: 'category',
-            data: xAxisData
-            },
-            yAxis: {
-                type: 'value'
-            },
-            toolbox: {
-                feature: {
-                    dataZoom: {
-                    show: true, // Mostrar la funcionalidad de zoom
-                    yAxisIndex: false // Aplicar zoom solo en el eje x
-                    },
-                    restore: {
-                    show: true // Mostrar el botón de restaurar el zoom
-                    }
-                }
-            },
-            series: [
-                {
-                    data: valores,
-                    type: 'line'
-                }
-            ]
-        };
-
-        myChart.setOption(option);
-        }
-
-        // Ejecutar la función cada 2 segundos
-        setInterval(actualizarGrafico, 2000);
-    </script>
     <script src="{% static 'src/assets/libs/jquery/dist/jquery.min.js' %}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'src/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
@@ -699,18 +643,288 @@
     <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
     <!--Custom JavaScript -->
     <script src="{% static 'dist/js/custom.min.js' %}"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!-- Flot Charts JavaScript -->
-    <!-- <script src="{% static 'src/assets/extra-libs/flot/excanvas.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.pie.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.time.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.stack.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot/jquery.flot.crosshair.js' %}"></script>
-    <script src="{% static 'src/assets/extra-libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
-    <script src="{% static 'dist/js/pages/flot/flot-data.js' %}"></script> -->
+
+    <!-- Configuracion suma promedios -->
+    <script>
+        // Obtener los elementos de input de cada fila
+        var fila1Inputs = document.querySelectorAll('.fila1');
+        var fila2Inputs = document.querySelectorAll('.fila2');
+        var fila3Inputs = document.querySelectorAll('.fila3');
+        var fila4Inputs = document.querySelectorAll('.fila4');
+        var fila5Inputs = document.querySelectorAll('.fila5');
+
+    
+        // Obtener los elementos de resultado
+        var resultadoPosicion1 = document.getElementById('resultado-posicion1');
+        var resultadoPosicion2 = document.getElementById('resultado-posicion2');
+        var resultadoPosicion3 = document.getElementById('resultado-posicion3');
+        var resultadoPosicion4 = document.getElementById('resultado-posicion4');
+        var resultadoPosicion5 = document.getElementById('resultado-posicion5');
+        var resultadoPosicion6 = document.getElementById('resultado-posicion6');
+        var resultadoPosicion7 = document.getElementById('resultado-posicion7');
+        var resultadoPosicion8 = document.getElementById('resultado-posicion8');
+        var resultadoPosicion9 = document.getElementById('resultado-posicion9');
+        var resultadoPosicion10 = document.getElementById('resultado-posicion10');
+        var resultadoPosicion11 = document.getElementById('resultado-posicion11');
+        var resultadoPosicion12 = document.getElementById('resultado-posicion12');
+        var resultadoPosicion13 = document.getElementById('resultado-posicion13');
+        var resultadoPosicion14 = document.getElementById('resultado-posicion14');
+        var resultadoPosicion15 = document.getElementById('resultado-posicion15');
+        var resultadoPosicion16 = document.getElementById('resultado-posicion16');
+
+    
+        // Función para realizar la suma de valores en posiciones correspondientes
+        function sumarPosicionesCorrespondientes() {
+          // Verificar si las filas tienen la misma longitud
+        //   if (fila1Inputs.length !== fila2Inputs.length) {
+        //     resultadoPosicion1.textContent = 'Las filas no tienen la misma longitud.';
+        //     return;
+        //   }
+    
+          var sumaPosicion1 = 0;
+          var sumaPosicion2 = 0;
+          var sumaPosicion4 = 0;
+          var sumaPosicion5 = 0;
+          var sumaPosicion6 = 0;
+          var sumaPosicion7 = 0;
+          var sumaPosicion8 = 0;
+          var sumaPosicion9 = 0;
+          var sumaPosicion10 = 0;
+          var sumaPosicion11 = 0;
+          var sumaPosicion12 = 0;
+          var sumaPosicion13 = 0;
+          var sumaPosicion14 = 0;
+          var sumaPosicion15 = 0;
+          var sumaPosicion16 = 0;
+
+    
+          // Sumar los valores en posiciones correspondientes
+          for (var i = 0; i < fila1Inputs.length; i++) {
+            var valorFila1 = parseFloat(fila1Inputs[i].value) || 0;
+            var valorFila2 = parseFloat(fila2Inputs[i].value) || 0;
+            var valorFila3 = parseFloat(fila3Inputs[i].value) || 0;
+            var valorFila4 = parseFloat(fila4Inputs[i].value) || 0;
+            var valorFila5 = parseFloat(fila5Inputs[i].value) || 0;
+
+    
+            if (i === 0) {
+              sumaPosicion1 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 1) {
+              sumaPosicion2 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 2) {
+              sumaPosicion3 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 3) {
+              sumaPosicion4 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 4) {
+              sumaPosicion5 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 5) {
+              sumaPosicion6 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 6) {
+              sumaPosicion7 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 7) {
+              sumaPosicion8 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 8) {
+              sumaPosicion9 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 9) {
+              sumaPosicion10 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 10) {
+              sumaPosicion11 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 11) {
+              sumaPosicion12 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 12) {
+              sumaPosicion13 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 13) {
+              sumaPosicion14 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 14) {
+              sumaPosicion15 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 15) {
+              sumaPosicion16 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            }
+          }
+    
+          // Mostrar los resultados
+          resultadoPosicion1.value = (sumaPosicion1/5);
+          resultadoPosicion2.value = (sumaPosicion2/5);
+          resultadoPosicion3.value = (sumaPosicion3/5);
+          resultadoPosicion4.value = (sumaPosicion4/5);
+          resultadoPosicion5.value = (sumaPosicion5/5);
+          resultadoPosicion6.value = (sumaPosicion6/5);
+          resultadoPosicion7.value = (sumaPosicion7/5);
+          resultadoPosicion8.value = (sumaPosicion8/5);
+          resultadoPosicion9.value = (sumaPosicion9/5);
+          resultadoPosicion10.value = (sumaPosicion10/5);
+          resultadoPosicion11.value = (sumaPosicion11/5);
+          resultadoPosicion12.value = (sumaPosicion12/5);
+          resultadoPosicion13.value = (sumaPosicion13/5);
+          resultadoPosicion14.value = (sumaPosicion14/5);
+          resultadoPosicion15.value = (sumaPosicion15/5);
+          resultadoPosicion16.value = (sumaPosicion16/5);
+
+        }
+    
+        // Ejecutar la función de suma cada 2 segundos
+        setInterval(sumarPosicionesCorrespondientes, 2000);
+    </script>
+
+    <!-- Configuracion ECHARTS -->
+    <script>
+        // Crear una instancia del gráfico
+        var myChart = echarts.init(document.getElementById('grafico'));
+
+        // Definir variables para almacenar los datos
+        var xAxisData = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
+                         'Muestra6', 'Muestra7', 'Muestra8', 'Muestra9', 'Muestra10',
+                         'Muestra11', 'Muestra12', 'Muestra13', 'Muestra14', 'Muestra15', 'Muestra16'];
+        var valores = [];
+
+        // Actualizar el gráfico con los valores de los inputs
+        function actualizarGrafico() {
+            var nuevosValores = [];
+
+            $('.mi-input').each(function() {
+                var valor = parseFloat($(this).val());
+                nuevosValores.push(valor);
+            });
+
+            valores = nuevosValores;
+
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: xAxisData,
+                    axisLabel: {
+                        rotate: 75, // Rotar los labels en 90 grados en sentido contrario a las agujas del reloj
+                        interval: 0 // Mostrar todos los labels
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                toolbox: {
+                    feature: {
+                        dataZoom: {
+                        show: true, // Mostrar la funcionalidad de zoom
+                        yAxisIndex: false // Aplicar zoom solo en el eje x
+                        },
+                        restore: {
+                        show: true // Mostrar el botón de restaurar el zoom
+                        }
+                    }
+                },
+                series: [
+                    {
+                        data: valores,
+                        type: 'line'
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        }
+
+        // Ejecutar la función cada 2 segundos
+        setInterval(actualizarGrafico, 2000);
+    </script>
+
+    <!-- Calculo diferencias entre mayor y menor -->
+    <script>
+        function obtenerHoraActual() {
+            var now = new Date();
+            var hora = now.getHours().toString().padStart(2, '0');
+            var minutos = now.getMinutes().toString().padStart(2, '0');
+            return hora + ":" + minutos;
+        }
+
+        function obtenerMayorYMenorPorPosicion() 
+        {
+            var numFilas = 5; // Número de filas
+            var numInputs = 16; // Número de inputs por fila
+            // var inputsLlenos = {}
+
+            for (var posicion = 0; posicion < numInputs; posicion++) {
+                var valores = [];
+
+                for (var fila = 1; fila <= numFilas; fila++) {
+                    var valor = parseFloat($(".input-fila-" + fila).eq(posicion).val());
+                    if (!isNaN(valor) && isFinite(valor)) {
+                        valores.push(valor);
+                        // inputsLlenos[posicion] = true;
+                    }
+                }
+
+                if (valores.length > 0) {
+                    var mayor = Math.max(...valores);
+                    var menor = Math.min(...valores);
+
+                    var resta = mayor - menor;
+                    $("#resultado" + (posicion + 1)).val(resta);
+
+                    if (valores.length === numFilas) {
+                        var horaActual = obtenerHoraActual();
+                        $("#hora" + (posicion + 1)).val(horaActual);
+                    } else {
+                        var horaActual = obtenerHoraActual();
+                        $("#hora" + (posicion + 1)).val('');
+                    }
+                } else {
+                    console.log("No se encontraron valores numericos en la posicion", posicion +1)
+                    // $("#resultado" + posicion).val('');
+                    // $("#hora" + posicion).val('');
+                }
+            }
+        }
+
+        setInterval(obtenerMayorYMenorPorPosicion, 2000);
+    </script>
+
+    <!-- Configuracion ECHARTS 2-->
+    <script>
+        // Crear una instancia del gráfico
+        var myChart2 = echarts.init(document.getElementById('grafico2'));
+
+        // Definir variables para almacenar los datos
+        var xAxisData2 = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
+                            'Muestra6', 'Muestra7', 'Muestra8', 'Muestra9', 'Muestra10',
+                            'Muestra11', 'Muestra12', 'Muestra13', 'Muestra14', 'Muestra15', 'Muestra16'];
+        var valores2 = [];
+
+        // Actualizar el gráfico con los valores de los inputs
+        function actualizarGrafico2() {
+            var nuevosValores = [];
+
+            $('.cl-rango').each(function() {
+                var valor = parseFloat($(this).val());
+                nuevosValores.push(valor);
+            });
+
+            valores2 = nuevosValores;
+
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: xAxisData2,
+                    axisLabel: {
+                        rotate: 75, // Rotar los labels en 90 grados en sentido contrario a las agujas del reloj
+                        interval: 0 // Mostrar todos los labels
+                    }
+                },
+                yAxis: {
+                type: 'value'
+                },
+                series: [
+                {
+                    data: valores2,
+                    type: 'line'
+                }
+                ]
+            };
+
+            myChart2.setOption(option);
+        }
+
+        // Ejecutar la función cada 2 segundos
+        setInterval(actualizarGrafico2, 2000);
+    </script>
 </body>
 
 </html>
