@@ -794,13 +794,24 @@
                 }
             },
             yAxis: {
-            type: 'value'
+                type: 'value'
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                    show: true, // Mostrar la funcionalidad de zoom
+                    yAxisIndex: false // Aplicar zoom solo en el eje x
+                    },
+                    restore: {
+                    show: true // Mostrar el botón de restaurar el zoom
+                    }
+                }
             },
             series: [
-            {
-                data: valores,
-                type: 'line'
-            }
+                {
+                    data: valores,
+                    type: 'line'
+                }
             ]
         };
 
