@@ -20,6 +20,7 @@
     <!-- Custom CSS -->
 
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/chartStyle.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -323,8 +324,12 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Control de Contenido Neto - 365g</h4>
-                        <form class="form-horizontal mt-3 form-material" action="{% url 'register' %}" method="POST">
+                        <div class="flex-row">
+                            <h4 class="card-title">Control de Contenido Neto - 365g</h4>
+                            <input type="button" value="Ocultar" id="show_button">
+                        </div>
+                        
+                        <form id="form_contenido" class="form-horizontal mt-3 form-material" action="{% url 'register' %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="form-group col-md-2 mb-0">
@@ -765,7 +770,7 @@
     <!-- Configuracion ECHARTS -->
     <script>
         // Crear una instancia del gráfico
-        var myChart = echarts.init(document.getElementById('grafico'));
+        var myChart = echarts.init(document.getElementById('chart-summary'));
 
         // Definir variables para almacenar los datos
         var xAxisData = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
@@ -777,7 +782,7 @@
         function actualizarGrafico() {
         var nuevosValores = [];
 
-        $('.mi-input').each(function() {
+        $('.input-sg').each(function() {
             var valor = parseFloat($(this).val());
             nuevosValores.push(valor);
         });
