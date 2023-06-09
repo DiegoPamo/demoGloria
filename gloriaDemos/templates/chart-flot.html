@@ -828,13 +828,6 @@
 
     <!-- Calculo diferencias entre mayor y menor -->
     <script>
-        function obtenerHoraActual() {
-            var now = new Date();
-            var hora = now.getHours().toString().padStart(2, '0');
-            var minutos = now.getMinutes().toString().padStart(2, '0');
-            return hora + ":" + minutos;
-        }
-
         function obtenerMayorYMenorPorPosicion() 
         {
             var numFilas = 5; // Número de filas
@@ -858,14 +851,6 @@
 
                     var resta = mayor - menor;
                     $("#resultado" + (posicion + 1)).val(resta);
-
-                    if (valores.length === numFilas) {
-                        var horaActual = obtenerHoraActual();
-                        $("#hora" + (posicion + 1)).val(horaActual);
-                    } else {
-                        var horaActual = obtenerHoraActual();
-                        $("#hora" + (posicion + 1)).val('');
-                    }
                 } else {
                     console.log("No se encontraron valores numericos en la posicion", posicion +1)
                     // $("#resultado" + posicion).val('');
@@ -875,6 +860,49 @@
         }
 
         setInterval(obtenerMayorYMenorPorPosicion, 2000);
+    </script>
+
+    <!-- Asignacion de horas a los inputs correspondientes -->
+    <script>
+        function obtenerHoraActual() {
+            var now = new Date();
+            var hora = now.getHours().toString().padStart(2, '0');
+            var minutos = now.getMinutes().toString().padStart(2, '0');
+            return hora + ":" + minutos;
+        }
+
+
+        function actualizarHoraInputs() {
+            var numFilas = 5; // Número de filas
+            var numInputs = 16; // Número de inputs por fila
+
+            for (var posicion = 0; posicion < numInputs; posicion++) {
+                var valores = [];
+
+                for (var fila = 1; fila <= numFilas; fila++) {
+                    var valor = parseFloat($(".input-fila-" + fila).eq(posicion).val());
+                    if (!isNaN(valor) && isFinite(valor)) {
+                        valores.push(valor);
+                    }
+                }
+
+                if (valores.length > 0) {
+                    if (valores.length === numFilas) {
+                        var horaActual = obtenerHoraActual();
+                        $("#hora" + (posicion + 1)).val(horaActual);
+                    }
+                } else {
+                    console.log("No se encontraron valores numéricos en la posición", posicion + 1);
+                }
+            }
+        }
+
+        actualizarHoraInputs(); // Llamar a la función una vez para establecer la hora inicial
+
+        // Evento para actualizar la hora solo cuando se modifiquen los inputs
+        $(".input-fila").on("input", function() {
+            actualizarHoraInputs();
+        });
     </script>
 
     <!-- Configuracion ECHARTS 2-->
