@@ -25,5 +25,5 @@ class NewControl_NetoForm(forms.ModelForm):
     )
     class Meta:
         model = Control_cont_neto
-        exclude = ('sub_grupo1','sub_grupo2','sub_grupo3','sub_grupo4','sub_grupo5',)
+        exclude = ('sub_grupo1','sub_grupo2','sub_grupo3','sub_grupo4','sub_grupo5','promedio','rango','hora_reg',)
         # fields = '_all__'

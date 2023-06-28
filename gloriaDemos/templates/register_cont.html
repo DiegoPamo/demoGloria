@@ -1,0 +1,1989 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, material admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, material design, material dashboard bootstrap 4 dashboard template">
+    <meta name="description" content="MaterialPro is powerful and clean admin dashboard template, inpired from Google's Material Design">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Dashboard Gloria</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <!-- This Page CSS -->
+
+    <!-- Custom CSS -->
+
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/chartStyle.css' %}" rel="stylesheet">
+</head>
+<style>
+  .navegacion {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 10vh;
+  }
+  
+  .nav-pills {
+    text-align: center;
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  }
+  
+  .nav-pills li {
+    width: 200px; /* Ancho deseado */
+    height: 50px; /* Altura deseada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #ccc; */
+  }
+</style>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="../../media/logo1.png" alt="homepage" class="light-logo" width="60"/>
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <!-- <img src="../media/logo1.png" class="light-logo" alt="homepage" width="45"/> -->
+                        </span>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a
+                                class="nav-link sidebartoggler d-none d-md-block waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav">
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                    class="mdi mdi-email"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up" aria-labelledby="2">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="border-bottom rounded-top py-3 px-4">
+                                            <h5 class="font-weight-medium mb-0">You have 4 new messages</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center message-body position-relative" style="height:250px;">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle online"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle busy"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Sonu Nigam</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I've sung a song! See you at</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/3.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle away"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Arijit Sinh</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I am a singer!</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link border-top text-center text-dark pt-3" href="javascript:void(0);"> <b>See all e-Mails</b> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="{{user.picture.url}}" alt="user" width="30" class="profile-pic rounded-circle" />
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up">
+                                <ul class="dropdown-user list-style-none">
+                                    {% if user.is_authenticated %}
+                                        <li>
+                                            <div class="dw-user-box p-3 d-flex">
+                                                <div class="u-img"><img src="{{user.picture.url}}" alt="user" class="rounded" width="80"></div>
+                                                <div class="u-text ml-2">
+                                                    <h4 class="mb-0">{{user.username}}</h4>
+                                                    <a class="nav-link" href="{%  url 'logout' %}">Logout</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li role="separator" class="dropdown-divider"></li>
+                                        <li class="user-list"><a class="px-3 py-2" href="{%  url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    {% else %}
+                                        <li class="user-list"><a class="px-3 py-2" href="{%  url 'login' %}"><i class="fa fa-power-off"></i> Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile position-relative" style="background: url(../assets/images/background/user-info.jpg) no-repeat;">
+                    <!-- User profile image -->
+                    <div class="profile-img"> <img src="{{user.picture.url}}" alt="user" class="w-100" /> </div>
+                    <!-- User profile text-->
+                    <div class="profile-text pt-1"> 
+                        <a href="#" class="dropdown-toggle u-dropdown w-100 text-white d-block position-relative" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.username}}</a>
+                        <div class="dropdown-menu animated flipInY"> 
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i>
+                                My Profile</a> 
+                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                            <div class="dropdown-divider"></div> 
+                            <a href="{% url 'logout' %}" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                            <span class="hide-menu">Personal</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="mdi mdi-gauge"></i>
+                                <span class="hide-menu">Dashboard </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="index.html" class="sidebar-link">
+                                        <i class="mdi mdi-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 1 </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="index2.html" class="sidebar-link">
+                                        <i class="mdi mdi-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 2 </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                                href="javascript:void(0)" aria-expanded="false"><i
+                                    class="mdi mdi-content-copy"></i><span class="hide-menu">Page Layouts </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="layout-inner-fixed-left-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-align-left"></i><span
+                                            class="hide-menu"> Inner Fixed Left Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-fixed-right-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-align-right"></i><span
+                                            class="hide-menu"> Inner Fixed Right Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-left-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-float-left"></i><span
+                                            class="hide-menu"> Inner Left Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-right-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-float-right"></i><span
+                                            class="hide-menu"> Inner Right Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-header.html" class="sidebar-link"><i
+                                            class="mdi mdi-view-quilt"></i><span class="hide-menu"> Fixed Header
+                                        </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
+                                            class="hide-menu"> Fixed Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-header-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-view-column"></i><span class="hide-menu">
+                                            Fixed Header &amp; Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-boxed-layout.html" class="sidebar-link"><i
+                                            class="mdi mdi-view-carousel"></i><span class="hide-menu"> Box Layout
+                                        </span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <!-- Bottom points-->
+            <div class="sidebar-footer">
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+            </div>
+            <!-- End Bottom points-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="row page-titles">
+                <div class="col-md-5 col-12 align-self-center">
+                    <h3 class="text-themecolor mb-0">Dashboard control contenido neto</h3>
+                    <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard Contenido Neto</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <form id="form_contenido" class="form-horizontal mt-3 form-material" action="{% url 'index' %}" method="POST">
+                {% csrf_token %}
+                <div class="container-fluid">
+
+                <div class="navegacion">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#section1">FOMRULARIO PRINCIPAL</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#section2">GRAFICOS Y TABLA MUESTREO</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#section3">CONTROL DE CILINDROS</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <!-- FORMULARIO DE LLENADO -->
+                    <div id="section1" class="card tab-pane fade show active">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <h4 class="card-title">Control de Contenido Neto - 365g</h4>
+                            </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.fecha|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.turno|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.lote|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-3 mb-0">
+                                        {{ form_control.linea_maq|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-3 mb-0">
+                                        {{ form_control.tanque|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.tipo_leche|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.operador|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.supervisor|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-6 mb-0">
+                                        {{ form_control.caracteristica|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.carta|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.frec_muestreo|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        {{ form_control.tam_muestra|as_crispy_field }}
+                                    </div>
+                                    <div class="form-group col-md-6 mb-0">
+                                        {{ form_control.especificacion|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 mb-0">
+                                        {{ form_control.observaciones|as_crispy_field }}
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <!-- FIN FORMULARIO DE LLENADO  -->
+
+                    <!-- GRAFICOS DE BARRAS  Y TABLA-->
+                    <div id="section2" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Promedio Muestro</h4>
+                                        <div class="demo-container" style="height:450px; width:650px;">
+                                            <div id="grafico" class="flot-chart-content" style="height:450px; width:650px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Rango</h4>
+                                        <div class="demo-container"style="height:450px; width:650px;">
+                                            <div id="grafico2" class="flot-chart-content" style="height:450px; width:650px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="overflow-x: auto;">
+                            <div class="card-body">
+                                <h4 class="card-title">Subgrupos</h4>
+                            </div>
+                            <table class="table table-striped" >
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1" name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila1 input-fila-1"name="sub_grupo1[]"></td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila2 input-fila-2" name="sub_grupo2[]"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila3 input-fila-3" name="sub_grupo3[]"></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila4 input-fila-4" name="sub_grupo4[]"></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                    <td><input type="text" class="form-control input-fila fila5 input-fila-5" name="sub_grupo5[]"></td>
+                                </tr>
+                                <tr>
+                                    <td>x̄</td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion1" name="promedio[]" readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion2" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion3" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion4" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion5" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion6" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion7" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion8" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion9" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion10" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion11" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion12" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion13" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion14" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion15" name="promedio[]"  readonly></td>
+                                    <td><input type="text" class="form-control cl-promedio" id="resultado-posicion16" name="promedio[]"  readonly></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">RANGO (R)</td>
+                                    <td><input type="text" id="resultado1" class="form-control cl-rango" name="rango[]"  readonly></td>
+                                    <td><input type="text" id="resultado2" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado3" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado4" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado5" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado6" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado7" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado8" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado9" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado10" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado11" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado12" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado13" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado14" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado15" class="form-control cl-rango" name="rango[]" readonly></td>
+                                    <td><input type="text" id="resultado16" class="form-control cl-rango" name="rango[]" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td>HORA</td>
+                                    <td><input type="time" class="form-control cl-hora" id="hora1" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora2" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora3" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora4" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora5" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora6" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora7" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora8" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora9" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora10" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora11" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora12" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora13" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora14" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora15" name="hora_reg[]"></td>
+                                    <td><input type="time" class="form-control cl-hora"id="hora16" name="hora_reg[]"></td>
+                                </tr>      
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- FIN DE GRAFICO DE BARRAS Y TABLA -->
+
+                    <!-- Sección 3 -->
+                    <div id="section3" class="tab-pane fade">
+
+                        <div class="container">
+                            <h1>CONTROL CILINDROS</h1>
+                        
+                            <div class="row">
+                              <!-- Card 1 -->
+                              <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title">CILINDRO 1</h5>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil1" name="cilindro1[]">
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                        
+                              <!-- Card 2 -->
+                              <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title">CILINDRO 2</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil2" name="cilindro2[]">
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                              </div>
+                        
+                              <!-- Card 3 -->
+                              <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title">CILINDRO 3</h5>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                        <div class="col-md-6">
+                                          <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                          <div class="col-md-6">
+                                            <input type="text" class="form-control cl-cil3" name="cilindro3[]">
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary mr-2">Guardar</button>
+                            <button type="button" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+            </form>
+
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2023 SUCCESS SDISE - DASHBOARD GLORIA
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    <aside class="customizer">
+        <a href="javascript:void(0)" class="service-panel-toggle"><i class="fa fa-spin fa-cog"></i></a>
+        <div class="customizer-body">
+            <ul class="nav customizer-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true"><i class="mdi mdi-wrench font-20"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#chat" role="tab"
+                        aria-controls="chat" aria-selected="false"><i class="mdi mdi-message-reply font-20"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false"><i
+                            class="mdi mdi-star-circle font-20"></i></a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+
+    <script src="{% static 'src/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'src/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'src/assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- apps -->
+    <script src="{% static 'dist/js/app.min.js' %}"></script>
+    <script src="{% static 'dist/js/app.init.js' %}"></script>
+    <script src="{% static 'dist/js/app-style-switcher.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'src/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'src/assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+
+    <script>
+    $(document).ready(function () {
+      // Navegación a la siguiente sección
+      $('.next').click(function () {
+        $(this).closest('.tab-pane').removeClass('show active');
+        $(this).closest('.tab-pane').next().addClass('show active');
+        $('a.nav-link[href="#' + $(this).closest('.tab-pane').next().attr('id') + '"]').tab('show');
+      });
+
+      // Navegación a la sección anterior
+      $('.prev').click(function () {
+        $(this).closest('.tab-pane').removeClass('show active');
+        $(this).closest('.tab-pane').prev().addClass('show active');
+        $('a.nav-link[href="#' + $(this).closest('.tab-pane').prev().attr('id') + '"]').tab('show');
+      });
+    });
+    </script>
+
+    <!-- Configuracion suma promedios -->
+    <script>
+        // Obtener los elementos de input de cada fila
+        var fila1Inputs = document.querySelectorAll('.fila1');
+        var fila2Inputs = document.querySelectorAll('.fila2');
+        var fila3Inputs = document.querySelectorAll('.fila3');
+        var fila4Inputs = document.querySelectorAll('.fila4');
+        var fila5Inputs = document.querySelectorAll('.fila5');
+
+    
+        // Obtener los elementos de resultado
+        var resultadoPosicion1 = document.getElementById('resultado-posicion1');
+        var resultadoPosicion2 = document.getElementById('resultado-posicion2');
+        var resultadoPosicion3 = document.getElementById('resultado-posicion3');
+        var resultadoPosicion4 = document.getElementById('resultado-posicion4');
+        var resultadoPosicion5 = document.getElementById('resultado-posicion5');
+        var resultadoPosicion6 = document.getElementById('resultado-posicion6');
+        var resultadoPosicion7 = document.getElementById('resultado-posicion7');
+        var resultadoPosicion8 = document.getElementById('resultado-posicion8');
+        var resultadoPosicion9 = document.getElementById('resultado-posicion9');
+        var resultadoPosicion10 = document.getElementById('resultado-posicion10');
+        var resultadoPosicion11 = document.getElementById('resultado-posicion11');
+        var resultadoPosicion12 = document.getElementById('resultado-posicion12');
+        var resultadoPosicion13 = document.getElementById('resultado-posicion13');
+        var resultadoPosicion14 = document.getElementById('resultado-posicion14');
+        var resultadoPosicion15 = document.getElementById('resultado-posicion15');
+        var resultadoPosicion16 = document.getElementById('resultado-posicion16');
+
+    
+        // Función para realizar la suma de valores en posiciones correspondientes
+        function sumarPosicionesCorrespondientes() {
+          // Verificar si las filas tienen la misma longitud
+        //   if (fila1Inputs.length !== fila2Inputs.length) {
+        //     resultadoPosicion1.textContent = 'Las filas no tienen la misma longitud.';
+        //     return;
+        //   }
+    
+          var sumaPosicion1 = 0;
+          var sumaPosicion2 = 0;
+          var sumaPosicion4 = 0;
+          var sumaPosicion5 = 0;
+          var sumaPosicion6 = 0;
+          var sumaPosicion7 = 0;
+          var sumaPosicion8 = 0;
+          var sumaPosicion9 = 0;
+          var sumaPosicion10 = 0;
+          var sumaPosicion11 = 0;
+          var sumaPosicion12 = 0;
+          var sumaPosicion13 = 0;
+          var sumaPosicion14 = 0;
+          var sumaPosicion15 = 0;
+          var sumaPosicion16 = 0;
+
+    
+          // Sumar los valores en posiciones correspondientes
+          for (var i = 0; i < fila1Inputs.length; i++) {
+            var valorFila1 = parseFloat(fila1Inputs[i].value) || 0;
+            var valorFila2 = parseFloat(fila2Inputs[i].value) || 0;
+            var valorFila3 = parseFloat(fila3Inputs[i].value) || 0;
+            var valorFila4 = parseFloat(fila4Inputs[i].value) || 0;
+            var valorFila5 = parseFloat(fila5Inputs[i].value) || 0;
+
+    
+            if (i === 0) {
+              sumaPosicion1 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 1) {
+              sumaPosicion2 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 2) {
+              sumaPosicion3 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 3) {
+              sumaPosicion4 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 4) {
+              sumaPosicion5 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 5) {
+              sumaPosicion6 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 6) {
+              sumaPosicion7 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 7) {
+              sumaPosicion8 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 8) {
+              sumaPosicion9 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 9) {
+              sumaPosicion10 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 10) {
+              sumaPosicion11 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 11) {
+              sumaPosicion12 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 12) {
+              sumaPosicion13 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 13) {
+              sumaPosicion14 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 14) {
+              sumaPosicion15 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            } else if (i === 15) {
+              sumaPosicion16 = valorFila1 + valorFila2 + valorFila3 + valorFila4 + valorFila5;
+            }
+          }
+    
+          // Mostrar los resultados
+          resultadoPosicion1.value = (sumaPosicion1/5);
+          resultadoPosicion2.value = (sumaPosicion2/5);
+          resultadoPosicion3.value = (sumaPosicion3/5);
+          resultadoPosicion4.value = (sumaPosicion4/5);
+          resultadoPosicion5.value = (sumaPosicion5/5);
+          resultadoPosicion6.value = (sumaPosicion6/5);
+          resultadoPosicion7.value = (sumaPosicion7/5);
+          resultadoPosicion8.value = (sumaPosicion8/5);
+          resultadoPosicion9.value = (sumaPosicion9/5);
+          resultadoPosicion10.value = (sumaPosicion10/5);
+          resultadoPosicion11.value = (sumaPosicion11/5);
+          resultadoPosicion12.value = (sumaPosicion12/5);
+          resultadoPosicion13.value = (sumaPosicion13/5);
+          resultadoPosicion14.value = (sumaPosicion14/5);
+          resultadoPosicion15.value = (sumaPosicion15/5);
+          resultadoPosicion16.value = (sumaPosicion16/5);
+
+        }
+    
+        // Ejecutar la función de suma cada 2 segundos
+        setInterval(sumarPosicionesCorrespondientes, 2000);
+    </script>
+
+    <!-- Configuracion ECHARTS -->
+    <script>
+        // Crear una instancia del gráfico
+        var myChart = echarts.init(document.getElementById('grafico'));
+
+        // Definir variables para almacenar los datos
+        var xAxisData = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
+                         'Muestra6', 'Muestra7', 'Muestra8', 'Muestra9', 'Muestra10',
+                         'Muestra11', 'Muestra12', 'Muestra13', 'Muestra14', 'Muestra15', 'Muestra16'];
+        var valores = [];
+
+        // Actualizar el gráfico con los valores de los inputs
+        function actualizarGrafico() {
+            var nuevosValores = [];
+
+            $('.cl-promedio').each(function() {
+                var valor = parseFloat($(this).val());
+                nuevosValores.push(valor);
+            });
+
+            valores = nuevosValores;
+
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: xAxisData,
+                    axisLabel: {
+                        rotate: 75, // Rotar los labels en 90 grados en sentido contrario a las agujas del reloj
+                        interval: 0 // Mostrar todos los labels
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                toolbox: {
+                    feature: {
+                        dataZoom: {
+                        show: true, // Mostrar la funcionalidad de zoom
+                        yAxisIndex: false // Aplicar zoom solo en el eje x
+                        },
+                        restore: {
+                        show: true // Mostrar el botón de restaurar el zoom
+                        }
+                    }
+                },
+                series: [
+                    {
+                        data: valores,
+                        type: 'line'
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        }
+
+        // Ejecutar la función cada 2 segundos
+        setInterval(actualizarGrafico, 2000);
+    </script>
+
+    <!-- Calculo diferencias entre mayor y menor -->
+    <script>
+        function obtenerMayorYMenorPorPosicion() 
+        {
+            var numFilas = 5; // Número de filas
+            var numInputs = 16; // Número de inputs por fila
+            // var inputsLlenos = {}
+
+            for (var posicion = 0; posicion < numInputs; posicion++) {
+                var valores = [];
+
+                for (var fila = 1; fila <= numFilas; fila++) {
+                    var valor = parseFloat($(".input-fila-" + fila).eq(posicion).val());
+                    if (!isNaN(valor) && isFinite(valor)) {
+                        valores.push(valor);
+                        // inputsLlenos[posicion] = true;
+                    }
+                }
+
+                if (valores.length > 0) {
+                    var mayor = Math.max(...valores);
+                    var menor = Math.min(...valores);
+
+                    var resta = mayor - menor;
+                    $("#resultado" + (posicion + 1)).val(resta);
+                } else {
+                    // console.log("No se encontraron valores numericos en la posicion", posicion +1)
+                    // $("#resultado" + posicion).val('');
+                    // $("#hora" + posicion).val('');
+                }
+            }
+        }
+
+        setInterval(obtenerMayorYMenorPorPosicion, 2000);
+    </script>
+
+    <!-- Asignacion de horas a los inputs correspondientes -->
+    <script>
+        function obtenerHoraActual() {
+            var now = new Date();
+            var hora = now.getHours().toString().padStart(2, '0');
+            var minutos = now.getMinutes().toString().padStart(2, '0');
+            return hora + ":" + minutos;
+        }
+
+
+        function actualizarHoraInputs() {
+            var numFilas = 5; // Número de filas
+            var numInputs = 16; // Número de inputs por fila
+
+            for (var posicion = 0; posicion < numInputs; posicion++) {
+                var valores = [];
+
+                for (var fila = 1; fila <= numFilas; fila++) {
+                    var valor = parseFloat($(".input-fila-" + fila).eq(posicion).val());
+                    if (!isNaN(valor) && isFinite(valor)) {
+                        valores.push(valor);
+                    }
+                }
+
+                if (valores.length > 0) {
+                    if (valores.length === numFilas) {
+                        var horaActual = obtenerHoraActual();
+                        $("#hora" + (posicion + 1)).val(horaActual);
+                    }
+                } else {
+                    // console.log("No se encontraron valores numéricos en la posición", posicion + 1);
+                }
+            }
+        }
+
+        actualizarHoraInputs(); // Llamar a la función una vez para establecer la hora inicial
+
+        // Evento para actualizar la hora solo cuando se modifiquen los inputs
+        $(".input-fila").on("input", function() {
+            actualizarHoraInputs();
+        });
+    </script>
+
+    <!-- Configuracion ECHARTS 2-->
+    <script>
+        // Crear una instancia del gráfico
+        var myChart2 = echarts.init(document.getElementById('grafico2'));
+
+        // Definir variables para almacenar los datos
+        var xAxisData2 = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
+                            'Muestra6', 'Muestra7', 'Muestra8', 'Muestra9', 'Muestra10',
+                            'Muestra11', 'Muestra12', 'Muestra13', 'Muestra14', 'Muestra15', 'Muestra16'];
+        var valores2 = [];
+
+        // Actualizar el gráfico con los valores de los inputs
+        function actualizarGrafico2() {
+            var nuevosValores = [];
+
+            $('.cl-rango').each(function() {
+                var valor = parseFloat($(this).val());
+                nuevosValores.push(valor);
+            });
+
+            valores2 = nuevosValores;
+
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: xAxisData2,
+                    axisLabel: {
+                        rotate: 75, // Rotar los labels en 90 grados en sentido contrario a las agujas del reloj
+                        interval: 0 // Mostrar todos los labels
+                    }
+                },
+                yAxis: {
+                type: 'value'
+                },
+                series: [
+                {
+                    data: valores2,
+                    type: 'line'
+                }
+                ]
+            };
+
+            myChart2.setOption(option);
+        }
+
+        // Ejecutar la función cada 2 segundos
+        setInterval(actualizarGrafico2, 2000);
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        var arrayFieldValores1 = '{{ modelo.sub_grupo1|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+
+        var arrayFieldValores2 = '{{ modelo.sub_grupo2|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+
+        var arrayFieldValores3 = '{{ modelo.sub_grupo3|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+
+        var arrayFieldValores4 = '{{ modelo.sub_grupo4|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+
+        var arrayFieldValores5 = '{{ modelo.sub_grupo5|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+        
+        var horasValores = '{{ modelo.hora_reg|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+
+          
+        var cil1Valores = '{{ modelo.cilindro1|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+        
+        var cil2Valores = '{{ modelo.cilindro2|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+        
+        var cil3Valores = '{{ modelo.cilindro3|escapejs }}'
+          .replace(/'/g, '')
+          .replace(/[\[\]]+/g, '')
+          .replace(/,,/g, ',0,');
+        
+
+        var inputsArrayField1 = $('.input-fila-1');
+        var inputsArrayField2 = $('.input-fila-2');
+        var inputsArrayField3 = $('.input-fila-3');
+        var inputsArrayField4 = $('.input-fila-4');
+        var inputsArrayField5 = $('.input-fila-5');
+
+        var inputsArrayHora = $('.cl-hora');
+        var inputsArrayCil1 = $('.cl-cil1');
+        var inputsArrayCil2 = $('.cl-cil2');
+        var inputsArrayCil3 = $('.cl-cil3');
+
+
+        asignarValores(inputsArrayField1, arrayFieldValores1);
+        asignarValores(inputsArrayField2, arrayFieldValores2);
+        asignarValores(inputsArrayField3, arrayFieldValores3);
+        asignarValores(inputsArrayField4, arrayFieldValores4);
+        asignarValores(inputsArrayField5, arrayFieldValores5);
+        asignarValores(inputsArrayHora, horasValores);
+        asignarValores(inputsArrayCil1, cil1Valores);
+        asignarValores(inputsArrayCil2, cil2Valores);
+        asignarValores(inputsArrayCil3, cil3Valores);
+
+        function asignarValores(inputsArrayField, arrayFieldValores) {
+          var valoresArray = arrayFieldValores.split(',');
+          var valoresModificadosArray = valoresArray.map(function(valor) {
+            return valor.trim() || '0';
+          });
+
+          inputsArrayField.each(function(index) {
+            $(this).val(valoresModificadosArray[index]);
+          });
+        }
+      });
+
+    </script>
+</body>
+
+</html>

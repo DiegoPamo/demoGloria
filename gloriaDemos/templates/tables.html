@@ -1,0 +1,596 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, material admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, material design, material dashboard bootstrap 4 dashboard template">
+    <meta name="description" content="MaterialPro is powerful and clean admin dashboard template, inpired from Google's Material Design">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Dashboard Gloria</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <!-- This Page CSS -->
+
+    <!-- Custom CSS -->
+
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/chartStyle.css' %}" rel="stylesheet">
+</head>
+<style>
+        .meter {
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .meter .fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+        
+        .meter.red .fill {
+            background-color: red;
+        }
+        
+        .meter.yellow .fill {
+            background-color: yellow;
+        }
+        
+        .meter.green .fill {
+            background-color: green;
+        }
+</style>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="../media/logo1.png" alt="homepage" class="light-logo" width="60"/>
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <!-- <img src="../media/logo1.png" class="light-logo" alt="homepage" width="45"/> -->
+                        </span>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a
+                                class="nav-link sidebartoggler d-none d-md-block waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav">
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                    class="mdi mdi-email"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up" aria-labelledby="2">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="border-bottom rounded-top py-3 px-4">
+                                            <h5 class="font-weight-medium mb-0">You have 4 new messages</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center message-body position-relative" style="height:250px;">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle online"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/2.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle busy"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Sonu Nigam</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I've sung a song! See you at</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/3.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle away"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Arijit Sinh</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I am a singer!</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="../assets/images/users/4.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span> </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link border-top text-center text-dark pt-3" href="javascript:void(0);"> <b>See all e-Mails</b> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="{{user.picture.url}}" alt="user" width="30" class="profile-pic rounded-circle" />
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up">
+                                <ul class="dropdown-user list-style-none">
+                                    {% if user.is_authenticated %}
+                                        <li>
+                                            <div class="dw-user-box p-3 d-flex">
+                                                <div class="u-img"><img src="{{user.picture.url}}" alt="user" class="rounded" width="80"></div>
+                                                <div class="u-text ml-2">
+                                                    <h4 class="mb-0">{{user.username}}</h4>
+                                                    <a class="nav-link" href="{%  url 'logout' %}">Logout</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li role="separator" class="dropdown-divider"></li>
+                                        <li class="user-list"><a class="px-3 py-2" href="{%  url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    {% else %}
+                                        <li class="user-list"><a class="px-3 py-2" href="{%  url 'login' %}"><i class="fa fa-power-off"></i> Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile position-relative" style="background: url(../assets/images/background/user-info.jpg) no-repeat;">
+                    <!-- User profile image -->
+                    <div class="profile-img"> <img src="{{user.picture.url}}" alt="user" class="w-100" /> </div>
+                    <!-- User profile text-->
+                    <div class="profile-text pt-1"> 
+                        <a href="#" class="dropdown-toggle u-dropdown w-100 text-white d-block position-relative" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.username}}</a>
+                        <div class="dropdown-menu animated flipInY"> 
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i>
+                                My Profile</a> 
+                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                            <div class="dropdown-divider"></div> 
+                            <a href="{% url 'logout' %}" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                            <span class="hide-menu">Personal</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="mdi mdi-gauge"></i>
+                                <span class="hide-menu">Dashboard </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="index.html" class="sidebar-link">
+                                        <i class="mdi mdi-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 1 </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="index2.html" class="sidebar-link">
+                                        <i class="mdi mdi-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 2 </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                                href="javascript:void(0)" aria-expanded="false"><i
+                                    class="mdi mdi-content-copy"></i><span class="hide-menu">Page Layouts </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="layout-inner-fixed-left-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-align-left"></i><span
+                                            class="hide-menu"> Inner Fixed Left Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-fixed-right-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-align-right"></i><span
+                                            class="hide-menu"> Inner Fixed Right Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-left-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-float-left"></i><span
+                                            class="hide-menu"> Inner Left Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="layout-inner-right-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-format-float-right"></i><span
+                                            class="hide-menu"> Inner Right Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-header.html" class="sidebar-link"><i
+                                            class="mdi mdi-view-quilt"></i><span class="hide-menu"> Fixed Header
+                                        </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
+                                            class="hide-menu"> Fixed Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-fixed-header-sidebar.html"
+                                        class="sidebar-link"><i class="mdi mdi-view-column"></i><span class="hide-menu">
+                                            Fixed Header &amp; Sidebar </span></a></li>
+                                <li class="sidebar-item"><a href="page-layout-boxed-layout.html" class="sidebar-link"><i
+                                            class="mdi mdi-view-carousel"></i><span class="hide-menu"> Box Layout
+                                        </span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <!-- Bottom points-->
+            <div class="sidebar-footer">
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+            </div>
+            <!-- End Bottom points-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="row page-titles">
+                <div class="col-md-5 col-12 align-self-center">
+                    <h3 class="text-themecolor mb-0">Dashboard control contenido neto</h3>
+                    <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Listado de registros</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- Contenedor principal -->
+                <!-- Contenedor principal -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <!-- Columna de la tabla -->
+                    <div class="col-md-8">
+                        <div class="card">
+                        <div class="card-body">
+                            <h4>LISTADO DE REGISTROS</h4>
+                            <div class="input-group mb-3">
+                                <input type='text' name="daterange" class="form-control daterange" />
+                            </div>
+
+                            <table id="tabla-datos" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Turno</th>
+                                    <th>Operador</th>
+                                    <th>Promedio Muestras</th>
+                                    <th>Margen de Error</th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for dato in registros %}
+                                    <tr data-id="{{ dato.id }}">
+                                        <td>{{dato.fecha|date:"Y-m-d"}}</td>
+                                        <td>{{dato.turno}}</td>
+                                        <td>{{dato.operador}}</td>
+                                        <td>{{dato.promedio_final}}</td>
+                                        <td>{{dato.margen_error}}</td>
+                                        <td>{{dato.observaciones}}</td>
+                                        <td hidden>{{dato.promedio}}</td>
+                                        <td hidden>{{dato.rango}}</td>
+                                    </tr>
+                                {% endfor %}
+                                <!-- Agrega más filas de ejemplo aquí -->
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                
+                    <!-- Columna de la card con inputs -->
+                    <div class="col-md-4">
+                        <div class="card" id="card-inputs">
+                            <div class="card-body">
+                                <h3 class="card-title">Detalles del Registro</h3>
+                                <a href="#" id="editar-enlace" class="btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i> Editar
+                                </a>
+                                <a href="#" id="generar-pdf" class="btn btn-danger" title="Generar PDF">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
+                                <div class="form-group">
+                                    <label for="fecha">Fecha:</label>
+                                    <input type="text" id="fecha" readonly class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="promedio">Promedio Muestras:</label>
+                                    <input type="text" id="promedio" readonly class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="margen">Margen de Error:</label>
+                                    <input type="text" id="margen" readonly class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="card col-md-5">
+                        <h4>GRAFICO MEDIA MUESTRAS</h4>
+                          <div class="demo-container" style="height: 450px;">
+                            <div id="grafico" class="flot-chart-content" style="height: 450px; width:550px;"></div>
+                          </div>
+                        </div>
+                        <div class="card col-md-6 ml-3">
+                        <h4>GRAFICO RANGO MUESTRAS</h4>
+                          <div class="demo-container" style="height: 450px;">
+                            <div id="grafico2" class="flot-chart-content" style="height: 450px; width:550px;"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2023 SUCCESS SDISE - DASHBOARD GLORIA
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    <aside class="customizer">
+        <a href="javascript:void(0)" class="service-panel-toggle"><i class="fa fa-spin fa-cog"></i></a>
+        <div class="customizer-body">
+            <ul class="nav customizer-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true"><i class="mdi mdi-wrench font-20"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#chat" role="tab"
+                        aria-controls="chat" aria-selected="false"><i class="mdi mdi-message-reply font-20"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false"><i
+                            class="mdi mdi-star-circle font-20"></i></a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+
+    <script src="{% static 'src/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+
+
+
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'src/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'src/assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- apps -->
+    <script src="{% static 'dist/js/app.min.js' %}"></script>
+    <script src="{% static 'dist/js/app.init.js' %}"></script>
+    <script src="{% static 'dist/js/app-style-switcher.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'src/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'src/assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+    <script src="{% static 'src/assets/libs/moment/min/moment.min.js' %}"></script>
+    <script src="{% static 'src/assets/libs/daterangepicker/daterangepicker.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'src/assets/libs/daterangepicker/daterangepicker.css' %}">
+
+    <script>
+        $(document).ready(function() {
+            // Cuando se haga clic en una fila de la tabla
+            $('#tabla-datos tbody tr').on('click', function(event) {
+                // Obtener los datos de la fila clickeada
+                var fecha = $(this).find('td:eq(0)').text();
+                var promedio = $(this).find('td:eq(3)').text();
+                var margen = $(this).find('td:eq(4)').text();
+                var valores = $(this).find('td:eq(6)').text();
+                var valores2 = $(this).find('td:eq(7)').text();
+
+                valores = reemplazarComillas(valores);
+                valores2 = reemplazarComillas(valores2);
+
+                actualizarGrafico(valores, 'grafico');
+                actualizarGrafico(valores2, 'grafico2');
+
+                // Actualizar los valores de los inputs en la card
+                $('#fecha').val(fecha);
+                $('#promedio').val(promedio);
+                $('#margen').val(margen);
+
+                var id = $(this).data('id');
+
+                // Actualizar el enlace con el ID de la fila seleccionada
+                var enlace = "{% url 'edit_register' id=0 %}".replace('0', id);
+                var enlacepdf = "{% url 'generar_pdf' id=0 %}".replace('0', id);
+                $('#editar-enlace').attr('href', enlace);
+                $('#generar-pdf').attr('href', enlacepdf);
+
+            });
+        });
+
+        var xAxisData = ['Muestra1', 'Muestra2', 'Muestra3', 'Muestra4', 'Muestra5', 
+                        'Muestra6', 'Muestra7', 'Muestra8', 'Muestra9', 'Muestra10',
+                        'Muestra11', 'Muestra12', 'Muestra13', 'Muestra14', 'Muestra15', 'Muestra16'];
+
+        function reemplazarComillas(cadena) {
+            cadena = cadena.replace(/''/g, '0');
+            cadena = cadena.replace(/'/g, '');
+            return cadena;
+        }
+
+        function actualizarGrafico(datos, graficoId) {
+        var myChart = echarts.init(document.getElementById(graficoId));
+        var datosParseados = JSON.parse(datos);
+
+        var option = {
+            xAxis: {
+            type: 'category',
+            data: xAxisData,
+            axisLabel: {
+                rotate: 75,
+                interval: 0
+            }
+            },
+            yAxis: {
+            type: 'value'
+            },
+            toolbox: {
+            feature: {
+                dataZoom: {
+                show: true,
+                yAxisIndex: false
+                },
+                restore: {
+                show: true
+                }
+            }
+            },
+            series: [{
+            data: datosParseados,
+            type: 'line'
+            }]
+        };
+
+        myChart.setOption(option);
+        }
+    </script>
+
+    <!-- CONFIGURACION FECHAS  -->
+    <script>
+    $(document).ready(function() {
+        // Inicializar el datepicker en el input con clase 'daterange'
+        $('.daterange').daterangepicker();
+
+        // Manejar el evento de cambio de fecha en el datepicker
+        $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+            var startDate = picker.startDate.format('YYYY-MM-DD');
+            var endDate = picker.endDate.format('YYYY-MM-DD');
+
+            // Ocultar todas las filas de la tabla
+            $('#tabla-datos tbody tr').hide();
+
+            // Mostrar solo las filas cuyas fechas están dentro del rango seleccionado
+            $('#tabla-datos tbody tr').each(function() {
+            var fecha = $(this).find('td:first-child').text();
+            if (fecha >= startDate && fecha <= endDate) {
+                $(this).show();
+            }
+            });
+        });
+    });
+    </script>
+
+</body>
+
+</html>
