@@ -12,11 +12,13 @@
     * {
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
     }
   @page {
     size: a4 landscape ;
     @frame content_frame {          /* Content Frame */
-      left: 40pt; width: 1200pt; top:20pt; bottom:20pt;
+      left: 40pt; width: 1370pt; top:20pt; bottom:20pt;
   }
 
 }
@@ -27,7 +29,6 @@
   
   .first-row {
     text-align: center;
-    border: 1px solid black;
     -pdf-keep-in-frame-mode: shrink;
   }
   .second-column{
@@ -67,10 +68,12 @@
   .third-row .form-control {
   
     border: 1px solid black;
-    
+    vertical-align: middle;
     
   }
-  
+  .form-control input{
+    vertical-align: center;
+  }
   .second-section {
     
   }
@@ -137,25 +140,44 @@
   .first-row tr{
     width: 100%;
   }
+  td{
+    vertical-align:  middle !important;
+  }
   label{
     text-align: center;
   }
   .content{
     position: absolute;
     text-align: center;
-    horizontal-align: center;
+  }
+  .title{
+    flex-grow:1;
+    
   }
     </style>
-  </head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
   <body>
     
     
     <div class="content">
       <table class="first-row">
         <tr>
-          <td colspan="32">Control de Contenido</td>
+          <td colspan="4" style="border-top: none; border-right: none; border-left: none; vertical-align: middle;">
+            
+                <img src="https://cdn.discordapp.com/attachments/762777492620181535/1125423968246038578/leche_gloria_1.png" width="90" height="60">
+             
+              
+                
+              
+          </td> 
+          <td colspan="28" style="border-top: none; border-right: none; border-left: none;">
+            
+            <h1>Control de Contenido Neto - 365g</h1>
+          </td>             
         </tr>
-        <tr >
+        <tr>
           <td colspan="3" class="form-control">
             <label class="lbl-input" for="date">Fecha</label>
             <input id="fecha" value="{{data.fecha}}">{{data.fecha}}
@@ -202,7 +224,7 @@
     
         </tr>
         <tr>
-          <td colspan="6" class="form-control">
+          <td colspan="6" class="form-control" >
               Carta: <span>{{ data.carta }}</span>
             </td>
             <td colspan="6" class="form-control">
@@ -216,10 +238,19 @@
         <tr>
           <td style="vertical-align: bottom;" colspan="18">
             <table class="second-table">
-              <div style="">
-                <img style="width: 900px; height: 900px; " src="https://cdn.discordapp.com/attachments/762777492620181535/1123239958698803220/4fd9c633-3389-4a89-8086-0966b12d2000.png" border="0" editable="true" Simpli data-image-edit  Simpli alt="logo">
+              <div class="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="data:image/png;base64,{{ graph_url1 }}" alt="Gráfico 1" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="data:image/png;base64,{{ graph_url2 }}" alt="Gráfico 2" class="img-fluid">
+                    </div>
+                </div>
               </div>
-              <div style=""></div>
+            
               <tr>
                 <th style="" colspan="3" scope="row" rowspan="5">Subgrupos</th>
                 <th colspan="2" scope="row">1</th>
@@ -298,7 +329,13 @@
                         </tr>
                       {% endwith %}
                     {% endfor %}
-                  {% endwith %}               
+                  {% endwith %}
+                    <tr>
+                      <td>Hora <span></span></td>
+                    </tr>
+                    <tr>
+                      <td>Tipo Leche <span></span></td>
+                    </tr>               
                   </table>
                 </td>
                 <td>
@@ -327,6 +364,12 @@
                       {% endwith %}
                     {% endfor %}
                   {% endwith %}
+                    <tr>
+                      <td>Hora <span></span></td>
+                    </tr>
+                    <tr>
+                      <td>Tipo Leche <span></span></td>
+                    </tr>
                   </table>
                 </td>
                 <td>
@@ -355,6 +398,12 @@
                       {% endwith %}
                     {% endfor %}
                   {% endwith %}
+                    <tr>
+                      <td>Hora <span></span></td>
+                    </tr>
+                    <tr>
+                      <td>Tipo Leche <span></span></td>
+                    </tr>
                   </table>
                 </td>
               </tr>
@@ -365,11 +414,12 @@
           <td colspan="18"> 
             <input>
                 <label class="lbl-input">Observaciones</label>
+                <span>Cambios pendientes de aprobacion</span>
           </td> 
           <td colspan="7">
             
               <div style="border:none;" class="form-control">
-                <input
+                <input/>
                 <label class="lbl-input">V° B°SUPERVISOR DE CONDENSERIA</label>
               </div>
           </td >          

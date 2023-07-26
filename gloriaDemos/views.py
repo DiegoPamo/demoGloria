@@ -6,6 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Control_cont_neto
 from django.urls import reverse
 
+from django.views import View
+
 # DEPENDENCIAS PDF
 import pdfkit
 from django.http import HttpResponse
@@ -13,7 +15,12 @@ from django.template.loader import render_to_string
 
 from xhtml2pdf import pisa
 from django.template.loader import get_template
-# config = pdfkit.configuration(wkhtmltopdf=r"C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe")
+
+import io
+import plotly.graph_objs as go
+import base64
+import ast
+
 
 def index(request):
     if request.method == 'POST':
@@ -56,6 +63,10 @@ def tables(request):
             registro.promedio_final = 0  # Opcional: si no hay valores, asignar un valor predeterminado
             registro.margen_error = 0  # Opcional: si no hay valores, asignar un margen de error de 0
 
+        # Crea los datos para el gráfico
+    
+
+
     return render(request,'tables.html',{'registros': registros})
 
 def edit_register(request,id):
@@ -83,8 +94,7 @@ def edit_register(request,id):
 
     return render(request, 'register_cont.html', context)
 
-
-def generar_pdf(request,id):
+def generar_pdf(request, id):
     modelo = Control_cont_neto.objects.get(id=id)
 
     cilindro1 = modelo.cilindro1
@@ -101,6 +111,37 @@ def generar_pdf(request,id):
     cilindro3_groups = [cilindro3[i:i+2] for i in range(0, len(cilindro3), 2)]
     tr_count3 = 48 - len(cilindro3_groups)
     cilindro3_extended = ['-'] * tr_count3
+
+
+    # Obtener el campo "promedio" del modelo
+    promedio = modelo.promedio
+    promedio_list = [float(val) for val in promedio]
+
+    rango = modelo.rango
+    rango = [val2.replace('', '0') for val2 in rango]
+    rango_list = [float(val2) for val2 in rango]
+
+
+    # Generar los gráficos con Plotly
+    x1 = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'M16']
+    y1 = promedio_list
+    trace1 = go.Scatter(x=x1, y=y1, mode='markers+lines')
+    layout1 = go.Layout(title='MEDIA DE LAS MUESTRAS', xaxis=dict(title='X'), yaxis=dict(title='Y'), plot_bgcolor='white')
+    fig1 = go.Figure(data=[trace1], layout=layout1)
+
+    x2 = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'M16']
+    y2 = rango_list
+    trace2 = go.Scatter(x=x2, y=y2, mode='markers+lines')
+    layout2 = go.Layout(title='RANGO DE MUESTRAS', xaxis=dict(title='X'), yaxis=dict(title='Y'), plot_bgcolor='white')
+    fig2 = go.Figure(data=[trace2], layout=layout2)
+
+
+    # IMAGENES CORRESPONDIENTES PARA AMBOS GRAFICOS EN EL PDF
+    graph_url1 = fig1.to_image(format='png', engine='kaleido')
+    graph_url1 = base64.b64encode(graph_url1).decode('utf-8')
+
+    graph_url2 = fig2.to_image(format='png', engine='kaleido')
+    graph_url2 = base64.b64encode(graph_url2).decode('utf-8')
 
     context = {
         'data': modelo,
@@ -119,9 +160,11 @@ def generar_pdf(request,id):
             'tr_count3': tr_count3,
             'cilindro3_extended': cilindro3_extended,
         },
+        'graph_url1': graph_url1,
+        'graph_url2': graph_url2,
     }
 
-    # Renderiza el HTML con los datos
+    # Renderiza el HTML con los datos y los gráficos
     html = render_to_string('pdfs/gloriaPDF.html', context=context)
 
     # Crea un objeto HttpResponse con las cabeceras PDF
@@ -136,7 +179,6 @@ def generar_pdf(request,id):
         return HttpResponse('Hubo errores al generar el PDF')
 
     return response
-
 
 ###########################
 ########USUARIO VIEWS#######
@@ -166,7 +208,7 @@ def login_user(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"Te logueaste con el usuario {username}.")
-                return redirect('index')
+                return redirect('tables')
             else:
                 messages.error(request, "Error al introducir credenciales de logueo")
         else:
